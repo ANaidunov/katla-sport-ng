@@ -27,16 +27,16 @@ export class HiveService {
   }
 
   addHive(hive: Hive): Observable<Hive> {
-    return null;
+    return this.http.post<Hive>(`${this.url}`, hive);
   }
 
   updateHive(hive: Hive): Observable<Object> {
-    return null;
+    return this.http.put<Object>(`${this.url}/${hive.id}`, hive);
   }
 
   deleteHive(hiveId: number): Observable<Object> {
     this.setHiveStatus(hiveId, true);
-    return null;
+    return this.http.delete(`${this.url}/${hiveId}`);
   }
 
   setHiveStatus(hiveId: number, deletedStatus: boolean): Observable<Hive> {
